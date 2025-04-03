@@ -1,0 +1,257 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #1b1b2f, #141E30 70%);
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  header .nav-logo {
+    height: 40px;
+    width: auto;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  nav li a {
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  
+  nav li a:hover {
+    color: #f39c12;
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    padding: 0 2rem;
+    background: linear-gradient(135deg, #243B55, #141E30 70%);
+  }
+  
+  .hero .logo {
+    max-width: 300px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #f1c40f;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #eeeeee;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color: #e84393;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #fd79a8;
+  }
+  
+  /* Section Base */
+  section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #f1c40f;
+  }
+  
+  section p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #ccc;
+  }
+  
+  /* Store Section */
+  #store {
+    background: #141E30;
+  }
+  
+  .store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+  }
+  
+  .store-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .store-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  
+  .store-item img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .store-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #f39c12;
+  }
+  
+  /* Testimonials Section */
+  #testimonials {
+    background: #1b1b2f;
+  }
+  
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+  }
+  
+  .testimonial {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-style: italic;
+  }
+  
+  .testimonial p {
+    margin-bottom: 1rem;
+    color: #ddd;
+  }
+  
+  .testimonial span {
+    display: block;
+    font-weight: 700;
+    color: #f1c40f;
+  }
+  
+  /* Contact Section */
+  #contact {
+    background: #1b1b2f;
+  }
+  
+  .contact-form {
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #2c2c54;
+    color: #fff;
+    font-size: 1rem;
+    resize: none;
+  }
+  
+  .contact-form button {
+    background-color: #e84393;
+    color: #fff;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: #fd79a8;
+  }
+  
+  /* Footer */
+  footer {
+    background: #0c0c1e;
+    padding: 1rem;
+    text-align: center;
+    color: #aaa;
+  }
+  
+  footer p {
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+  }
