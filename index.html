@@ -1,123 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vondoom's Retro Oasis</title>
-  
-  <!-- Google Font -->
+  <meta charset="UTF-8">
+  <meta name="description" content="VonDoom's Retro Oasis - Used Video Games, Custom Games, and Retro Merchandise">
+  <meta name="keywords" content="Retro, Games, Used Games, Custom Game, Car Decals, Merchandise">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VonDoom's Retro Oasis</title>
+  <!-- Google Fonts: Orbitron -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  
-  <!-- External CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- HEADER -->
+<body data-theme="dark">
   <header>
-    <img src="https://github.com/TronVonDoom/tronvondoom.github.io/blob/main/logo_v2.png?raw=true" alt="Vondoom's Retro Oasis Logo" class="nav-logo">
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#store">Store</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="header-inner">
+      <div class="logo-container">
+        <img src="images/logo.png" alt="VonDoom's Retro Oasis Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#games">Used Games</a></li>
+          <li><a href="#custom-game">Custom Game</a></li>
+          <li><a href="#decals">Car Decals</a></li>
+          <li><a href="#merch">Merch</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Theme Toggle Button using custom icons -->
+      <button id="theme-toggle" title="Toggle Theme">
+        <img id="theme-icon" src="images/icons/Sun.svg" alt="Toggle Icon">
+      </button>
+    </div>
   </header>
   
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <img src="https://github.com/TronVonDoom/tronvondoom.github.io/blob/main/logo_v2.png?raw=true" alt="Vondoom's Retro Oasis Logo" class="logo">
-    <h1>Vondoom's Retro Oasis</h1>
-    <p>Your destination for all things retro and awesome!</p>
-    <div class="hero-buttons">
-      <a href="#about" class="btn">Learn More</a>
-      <a href="https://www.ebay.com/str/vondoomsretrooasis" class="btn">Visit Our eBay Store</a>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to VonDoom's Retro Oasis</h1>
+      <p>Your destination for classic video games, custom experiences, and vintage merchandise!</p>
+      <a href="#games" class="cta-button">Shop Now</a>
     </div>
   </section>
   
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      Vondoom's Retro Oasis is the ultimate hub for vintage enthusiasts and retro gamers. We celebrate the charm of the classic era with a modern twist. Dive into our collection of retro-inspired items and relive the golden days.
-    </p>
-  </section>
-  
-  <!-- STORE SECTION -->
-  <section id="store">
-    <h2>Shop Our Collection</h2>
-    <p>
-      Browse our exclusive selection of retro collectibles, vintage gaming gear, and more. Each item is carefully curated to bring you the best of the past with a touch of modern style.
-    </p>
-    <div class="store-grid">
-      <div class="store-item">
-        <h3>Video Games</h3>
-        <p>Discover hidden gems and custom favorites—shop our unique collection of used and custom video games.</p>
-        <a href="https://www.ebay.com/str/vondoomsretrooasis/Video-Games/_i.html?_sacat=139973" class="btn">Buy Now</a>
+  <!-- Used Games Section -->
+  <section id="games" class="section">
+    <div class="section-header">
+      <h2>Used & Retro Games</h2>
+      <p>Explore our collection of handpicked video games from thrift finds and personal collections.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x300.png?text=Retro+Game+1" alt="Retro Game 1">
+        <h3>Retro Game Title 1</h3>
+        <p>$19.99</p>
+        <button>Buy Now</button>
       </div>
-      <div class="store-item">
-        <h3>Vintage Cartridge</h3>
-        <p>Relive the golden era of gaming with these iconic cartridges.</p>
-        <a href="https://www.ebay.com/str/vondoomsretrooasis" class="btn">Buy Now</a>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x300.png?text=Retro+Game+2" alt="Retro Game 2">
+        <h3>Retro Game Title 2</h3>
+        <p>$24.99</p>
+        <button>Buy Now</button>
       </div>
-      <div class="store-item">
-        <h3>Arcade Machine</h3>
-        <p>Bring the arcade experience home with this classic arcade machine.</p>
-        <a href="https://www.ebay.com/str/vondoomsretrooasis" class="btn">Buy Now</a>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x300.png?text=Retro+Game+3" alt="Retro Game 3">
+        <h3>Retro Game Title 3</h3>
+        <p>$9.99</p>
+        <button>Buy Now</button>
       </div>
     </div>
   </section>
   
-  <!-- TESTIMONIALS SECTION -->
-  <section id="testimonials">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial">
-        <p>"Absolutely love the retro vibes and quality of the items. A true blast from the past!"</p>
-        <span>- Alex</span>
-      </div>
-      <div class="testimonial">
-        <p>"A perfect blend of nostalgia and modern style. The collection is amazing!"</p>
-        <span>- Jamie</span>
-      </div>
-      <div class="testimonial">
-        <p>"Incredible selection and excellent customer service. Highly recommended!"</p>
-        <span>- Sam</span>
+  <!-- Custom Game Section -->
+  <section id="custom-game" class="section">
+    <div class="section-header">
+      <h2>Custom Video Game</h2>
+      <p>Experience our exclusive retro-inspired game crafted for true fans of arcade classics.</p>
+    </div>
+    <div class="custom-game-details">
+      <img src="https://via.placeholder.com/500x300.png?text=Custom+Game" alt="Custom Game">
+      <div class="game-info">
+        <h3>VonDoom's Arcade Quest</h3>
+        <p>Embark on an epic journey in a world where retro meets modern. Discover challenges, puzzles, and endless fun in our custom game experience.</p>
+        <button>Learn More</button>
       </div>
     </div>
   </section>
   
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Have questions or want to share your retro stories? Get in touch!</p>
-    <form class="contact-form" action="mailto:someone@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
+  <!-- Car Decals Section -->
+  <section id="decals" class="section">
+    <div class="section-header">
+      <h2>Car Decals</h2>
+      <p>Personalize your ride with our high-quality Oracle 651 vinyl decals designed to turn heads.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x300.png?text=Decal+1" alt="Decal 1">
+        <h3>Decal Design 1</h3>
+        <p>$5.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x300.png?text=Decal+2" alt="Decal 2">
+        <h3>Decal Design 2</h3>
+        <p>$7.99</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Merchandise Section -->
+  <section id="merch" class="section">
+    <div class="section-header">
+      <h2>Merchandise</h2>
+      <p>We’re expanding our lineup with T-shirts, mugs, posters, and more retro-inspired merchandise!</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x300.png?text=T-Shirt" alt="T-Shirt">
+        <h3>Retro Oasis T-Shirt</h3>
+        <p>$14.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x300.png?text=Mug" alt="Mug">
+        <h3>Arcade Mug</h3>
+        <p>$9.99</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="section-header">
+      <h2>Stay in Touch</h2>
+      <p>Subscribe to our newsletter for the latest updates, exclusive offers, and retro insights!</p>
+    </div>
+    <form>
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
     </form>
   </section>
   
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <p>&copy; <span id="year"></span> Vondoom's Retro Oasis &bull; All rights reserved.</p>
+    <div class="footer-content">
+      <p>&copy; <span id="year"></span> VonDoom's Retro Oasis. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank">Instagram</a>
+      </div>
+    </div>
   </footer>
   
-  <!-- SMOOTH SCROLL JS -->
   <script>
-    // Update footer year automatically
+    // Set current year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
+
+    const toggleButton = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    // Update the theme icon based on the current theme
+    function updateToggleIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.src = "images/icons/Sun.svg";
+      } else {
+        themeIcon.src = "images/icons/Moon.svg";
+      }
+    }
+
+    // Initialize the theme from localStorage or default to dark
+    const savedTheme = localStorage.getItem('theme') || document.body.getAttribute('data-theme');
+    document.body.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
+
+    // Toggle theme on button click
+    toggleButton.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateToggleIcon(newTheme);
     });
   </script>
 </body>
