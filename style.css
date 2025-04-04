@@ -47,7 +47,7 @@
 
 /* Base Styles */
 body {
-  font-family: 'Roboto', sans-serif; /* Replace Press Start 2P with Roboto */
+  font-family: 'Quicksand', sans-serif; /* Replace Roboto with Quicksand */
   background: var(--primary-bg);
   color: var(--primary-text);
   line-height: 1.6;
