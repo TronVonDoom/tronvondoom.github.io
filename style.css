@@ -22,6 +22,22 @@
   --card-border: #333;
 }
 
+[data-theme="dark"] #theme-toggle {
+  background: #1E90FF; /* Matches the dark theme accent color */
+}
+
+[data-theme="dark"] #theme-toggle:hover {
+  background: #1C86EE; /* Slightly darker shade for hover effect */
+}
+
+[data-theme="dark"] #hamburger-menu {
+  background: #1E90FF; /* Matches the dark theme accent color */
+}
+
+[data-theme="dark"] #hamburger-menu:hover {
+  background: #1C86EE; /* Slightly darker shade for hover effect */
+}
+
 /* Global Reset */
 * {
   margin: 0;
@@ -31,7 +47,7 @@
 
 /* Base Styles */
 body {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Replace Press Start 2P with Roboto */
   background: var(--primary-bg);
   color: var(--primary-text);
   line-height: 1.6;
@@ -70,8 +86,15 @@ nav ul li a:hover {
   color: var(--accent-color);
 }
 
-/* Theme Toggle Button */
-#theme-toggle {
+/* Header Controls */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Hamburger Menu */
+#hamburger-menu {
   width: 3rem;
   height: 3rem;
   padding: 0.25rem;
@@ -85,9 +108,118 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-#theme-toggle:hover {
+#hamburger-menu:hover {
   background: #e6008a;
   transform: scale(1.05);
+}
+
+#hamburger-menu img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Mobile Navigation */
+#mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--header-bg);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#mobile-nav.open {
+  display: flex;
+}
+
+#mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#mobile-nav ul li a {
+  color: var(--header-text);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+#mobile-nav ul li a:hover {
+  background: var(--accent-color);
+  color: var(--header-bg);
+}
+
+#mobile-nav #theme-toggle {
+  background: var(--accent-color);
+  border: none;
+  border-radius: 6px;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#mobile-nav #theme-toggle:hover {
+  background: #e6008a;
+}
+
+/* Separator for Mobile Theme Toggle */
+#mobile-nav hr {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 1rem 0 0.5rem; /* Adjust bottom margin to align with the toggle button */
+}
+
+/* Desktop Navigation */
+#desktop-nav {
+  display: none;
+  margin-left: auto; /* Push the navigation bar to the right */
+}
+
+#desktop-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+#desktop-nav ul li a {
+  color: var(--header-text);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+#desktop-nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  display: none; /* Hidden by default */
+  width: 3rem;
+  height: 3rem;
+  padding: 0.25rem;
+  background: var(--accent-color);
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-left: 1rem; /* Add spacing between the nav bar and the toggle button */
 }
 
 #theme-toggle img {
@@ -95,6 +227,46 @@ nav ul li a:hover {
   height: 2.5rem;
   object-fit: contain;
   pointer-events: none;
+}
+
+#theme-toggle:hover {
+  background: #e6008a;
+}
+
+/* Mobile Theme Toggle */
+#theme-toggle-mobile {
+  background: var(--accent-color);
+  border: none;
+  border-radius: 6px;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin: 0 auto; /* Center horizontally */
+  margin-top: 0.5rem; /* Add spacing above to align with the horizontal rule */
+  margin-bottom: 0.5rem; /* Add spacing below to align with the bottom of the menu */
+}
+
+#theme-toggle-mobile img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#theme-toggle-mobile:hover {
+  background: #e6008a;
+}
+
+/* Ensure the mobile theme toggle button matches the theme */
+[data-theme="dark"] #theme-toggle-mobile {
+  background: #1E90FF; /* Matches the dark theme accent color */
+}
+
+[data-theme="dark"] #theme-toggle-mobile:hover {
+  background: #1C86EE; /* Slightly darker shade for hover effect */
 }
 
 /* Hero Section */
@@ -323,11 +495,202 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .custom-game-details {
-    flex-direction: column;
+  /* Header */
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
+
   nav ul {
     flex-direction: column;
     gap: 0.5rem;
+    text-align: center;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  /* Section Headers */
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-header p {
+    font-size: 0.9rem;
+  }
+
+  /* Product Grid */
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    padding: 1rem;
+  }
+
+  .product-card img {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Custom Game Section */
+  .custom-game-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .custom-game-details img {
+    margin-bottom: 1rem;
+  }
+
+  .game-info {
+    text-align: center;
+  }
+
+  .game-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .game-info p {
+    font-size: 0.9rem;
+  }
+
+  .game-info button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  /* Contact Section */
+  .contact-section form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-section input[type="email"] {
+    width: 100%;
+  }
+
+  .contact-section button {
+    width: 100%;
+  }
+
+  /* Footer */
+  .social-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Show Hamburger Menu on Mobile */
+  #hamburger-menu {
+    display: block;
+  }
+
+  nav {
+    display: none;
+  }
+
+  #desktop-nav {
+    display: none;
+  }
+
+  #theme-toggle {
+    display: none; /* Hide theme toggle on mobile */
+  }
+}
+
+@media (min-width: 769px) {
+  #mobile-nav {
+    display: none;
+  }
+
+  #hamburger-menu {
+    display: none;
+  }
+
+  #desktop-nav {
+    display: flex; /* Show desktop navigation */
+  }
+
+  #theme-toggle {
+    display: flex; /* Show theme toggle on desktop */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hero Section */
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+
+  .cta-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  /* Section Headers */
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-header p {
+    font-size: 0.8rem;
+  }
+
+  /* Product Cards */
+  .product-card h3 {
+    font-size: 1rem;
+  }
+
+  .product-card p {
+    font-size: 0.8rem;
+  }
+
+  .product-card button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Custom Game Section */
+  .game-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .game-info p {
+    font-size: 0.8rem;
+  }
+
+  .game-info button {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  /* Footer */
+  footer p {
+    font-size: 0.8rem;
+  }
+
+  .social-links a {
+    font-size: 0.9rem;
   }
 }

@@ -6,8 +6,9 @@
   <meta name="keywords" content="Retro, Games, Used Games, Custom Game, Car Decals, Merchandise">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VonDoom's Retro Oasis</title>
-  <!-- Google Fonts: Orbitron -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-theme="dark">
@@ -16,7 +17,27 @@
       <div class="logo-container">
         <img src="images/logo.png" alt="VonDoom's Retro Oasis Logo">
       </div>
-      <nav>
+      <div class="header-controls">
+        <!-- Hamburger Menu Button -->
+        <button id="hamburger-menu" aria-label="Toggle Navigation">
+          <img src="images/icons/hamburger.svg" alt="Menu Icon">
+        </button>
+      </div>
+      <nav id="mobile-nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#games">Used Games</a></li>
+          <li><a href="#custom-game">Custom Game</a></li>
+          <li><a href="#decals">Car Decals</a></li>
+          <li><a href="#merch">Merch</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <hr> <!-- Separator for theme toggle -->
+        <button id="theme-toggle-mobile" title="Toggle Theme">
+          <img id="theme-icon-mobile" src="images/icons/Sun.svg" alt="Toggle Icon">
+        </button>
+      </nav>
+      <nav id="desktop-nav">
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#games">Used Games</a></li>
@@ -26,7 +47,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <!-- Theme Toggle Button using custom icons -->
+      <!-- Theme Toggle Button for Desktop -->
       <button id="theme-toggle" title="Toggle Theme">
         <img id="theme-icon" src="images/icons/Sun.svg" alt="Toggle Icon">
       </button>
@@ -171,8 +192,8 @@
       }
     }
 
-    // Initialize the theme from localStorage or default to dark
-    const savedTheme = localStorage.getItem('theme') || document.body.getAttribute('data-theme');
+    // Initialize the theme to dark by default or from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     document.body.setAttribute('data-theme', savedTheme);
     updateToggleIcon(savedTheme);
 
@@ -184,6 +205,37 @@
       localStorage.setItem('theme', newTheme);
       updateToggleIcon(newTheme);
     });
+
+    // Hamburger Menu Toggle
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburgerMenu.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // Sync theme toggle for desktop and mobile
+    const toggleButtonMobile = document.getElementById('theme-toggle-mobile');
+    const themeIconMobile = document.getElementById('theme-icon-mobile');
+
+    toggleButtonMobile.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateToggleIcon(newTheme);
+      updateToggleIconMobile(newTheme);
+    });
+
+    function updateToggleIconMobile(theme) {
+      if (theme === 'dark') {
+        themeIconMobile.src = "images/icons/Sun.svg";
+      } else {
+        themeIconMobile.src = "images/icons/Moon.svg";
+      }
+    }
+
+    updateToggleIconMobile(savedTheme);
   </script>
 </body>
 </html>
