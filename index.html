@@ -27,7 +27,7 @@
       <nav id="mobile-nav">
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#ebay-store">eBay Store</a></li>
+          <li><a href="https://www.ebay.com/str/vondoomsretrooasis" target="_blank">eBay Store</a></li>
           <li><a href="#merch">Merch</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -39,7 +39,7 @@
       <nav id="desktop-nav">
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#ebay-store">eBay Store</a></li>
+          <li><a href="https://www.ebay.com/str/vondoomsretrooasis" target="_blank">eBay Store</a></li>
           <li><a href="#merch">Merch</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -58,6 +58,34 @@
       <h1>Visit Our eBay Store</h1>
       <p>Discover exclusive retro games, merchandise, and more on our eBay store!</p>
       <a href="https://www.ebay.com/str/vondoomsretrooasis" target="_blank" class="cta-button">Shop on eBay</a>
+    </div>
+  </section>
+
+  <!-- Gaming News Section -->
+  <section id="gaming-news" class="section">
+    <div class="section-header">
+      <h2>Gaming News</h2>
+      <p>Stay updated with the latest news and trends in the gaming world.</p>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <a href="https://example.com/article1" target="_blank">
+          <img src="https://via.placeholder.com/300x200.png?text=Article+1" alt="Article 1">
+        </a>
+        <h3>Exciting New Game Release</h3>
+      </div>
+      <div class="news-card">
+        <a href="https://example.com/article2" target="_blank">
+          <img src="https://via.placeholder.com/300x200.png?text=Article+2" alt="Article 2">
+        </a>
+        <h3>Top 10 Retro Games of All Time</h3>
+      </div>
+      <div class="news-card">
+        <a href="https://example.com/article3" target="_blank">
+          <img src="https://via.placeholder.com/300x200.png?text=Article+3" alt="Article 3">
+        </a>
+        <h3>Gaming Industry Trends in 2023</h3>
+      </div>
     </div>
   </section>
   
@@ -117,10 +145,11 @@
     // Update the theme icon based on the current theme
     function updateToggleIcon(theme) {
       if (theme === 'dark') {
-        themeIcon.src = "images/icons/Sun.svg";
+        themeIcon.src = "images/icons/Moon.svg"; // Show Moon for dark theme
       } else {
-        themeIcon.src = "images/icons/Moon.svg";
+        themeIcon.src = "images/icons/Sun.svg"; // Show Sun for light theme
       }
+      themeIcon.style.filter = "brightness(0) saturate(100%) invert(100%)"; // Pure white for both themes
     }
 
     // Initialize the theme to dark by default or from localStorage
@@ -160,10 +189,11 @@
 
     function updateToggleIconMobile(theme) {
       if (theme === 'dark') {
-        themeIconMobile.src = "images/icons/Sun.svg";
+        themeIconMobile.src = "images/icons/Moon.svg"; // Show Moon for dark theme
       } else {
-        themeIconMobile.src = "images/icons/Moon.svg";
+        themeIconMobile.src = "images/icons/Sun.svg"; // Show Sun for light theme
       }
+      themeIconMobile.style.filter = "brightness(0) saturate(100%) invert(100%)"; // Pure white for both themes
     }
 
     updateToggleIconMobile(savedTheme);

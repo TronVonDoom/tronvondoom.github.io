@@ -227,6 +227,8 @@ nav ul li a:hover {
   height: 2.5rem;
   object-fit: contain;
   pointer-events: none;
+  filter: brightness(0) saturate(100%) invert(100%); /* Pure white for both themes */
+  transition: filter 0.3s ease; /* Smooth transition for color changes */
 }
 
 #theme-toggle:hover {
@@ -254,6 +256,8 @@ nav ul li a:hover {
   height: 2.5rem;
   object-fit: contain;
   pointer-events: none;
+  filter: brightness(0) saturate(100%) invert(100%); /* Pure white for both themes */
+  transition: filter 0.3s ease; /* Smooth transition for color changes */
 }
 
 #theme-toggle-mobile:hover {
@@ -267,6 +271,17 @@ nav ul li a:hover {
 
 [data-theme="dark"] #theme-toggle-mobile:hover {
   background: #1C86EE; /* Slightly darker shade for hover effect */
+}
+
+/* Ensure SVG color matches the theme */
+[data-theme="dark"] #theme-toggle img, 
+[data-theme="dark"] #theme-toggle-mobile img {
+  filter: brightness(0) saturate(100%) invert(100%); /* Pure white for dark theme */
+}
+
+[data-theme="light"] #theme-toggle img, 
+[data-theme="light"] #theme-toggle-mobile img {
+  filter: brightness(0) saturate(100%) invert(90%) sepia(50%) saturate(500%) hue-rotate(40deg) brightness(105%) contrast(95%); /* Warm yellow for light theme */
 }
 
 /* Hero Section */
@@ -481,6 +496,58 @@ nav ul li a:hover {
 .ebay-store-section .cta-button:hover {
   background: #e6008a;
   transform: scale(1.05);
+}
+
+/* Gaming News Section */
+#gaming-news {
+  padding: 4rem 2rem;
+  background: var(--secondary-bg);
+}
+
+#gaming-news .section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#gaming-news .section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-text);
+}
+
+#gaming-news .section-header p {
+  font-size: 1rem;
+  color: var(--primary-text);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news-card {
+  text-align: center;
+}
+
+.news-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /* Rounded corners for images */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.news-card h3 {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: var(--primary-text);
 }
 
 /* Contact Section */
