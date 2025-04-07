@@ -6,20 +6,40 @@
   <meta name="keywords" content="Retro, Games, Used Games, Custom Game, Car Decals, Merchandise">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VonDoom's Retro Oasis</title>
-  <!-- Google Fonts: Roboto -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'YOUR_TRACKING_ID');
+  </script>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="VonDoom's Retro Oasis">
+  <meta property="og:description" content="Used Video Games, Custom Games, and Retro Merchandise">
+  <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta property="og:type" content="website">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VonDoom's Retro Oasis">
+  <meta name="twitter:description" content="Used Video Games, Custom Games, and Retro Merchandise">
+  <meta name="twitter:image" content="https://yourwebsite.com/images/twitter-image.jpg">
 </head>
 <body data-theme="dark">
+  <div id="loading-spinner" class="spinner"></div>
   <header>
     <div class="header-inner">
       <div class="logo-container">
         <img src="images/logo.png" alt="VonDoom's Retro Oasis Logo">
       </div>
       <div class="header-controls">
-        <!-- Hamburger Menu Button -->
         <button id="hamburger-menu" aria-label="Toggle Navigation">
           <img src="images/icons/hamburger.svg" alt="Menu Icon">
         </button>
@@ -31,7 +51,7 @@
           <li><a href="#merch">Merch</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <hr> <!-- Separator for theme toggle -->
+        <hr>
         <button id="theme-toggle-mobile" title="Toggle Theme">
           <img id="theme-icon-mobile" src="images/icons/Sun.svg" alt="Toggle Icon">
         </button>
@@ -44,122 +64,110 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <!-- Theme Toggle Button for Desktop -->
       <button id="theme-toggle" title="Toggle Theme">
-        <img id="theme-icon" src="images/icons/Sun.svg" alt="Toggle Icon">
+        <img id="theme-icon" src="images/icons/Sun.svg" alt="Theme Toggle Icon">
       </button>
     </div>
   </header>
+  <main>
+    <!-- eBay Store Hero Section -->
+    <section id="ebay-store" class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Visit Our eBay Store</h1>
+        <p>Discover exclusive retro games, merchandise, and more on our eBay store!</p>
+        <a href="https://www.ebay.com/str/vondoomsretrooasis" target="_blank" class="cta-button">Shop on eBay</a>
+      </div>
+    </section>
 
-  <!-- eBay Store Hero Section -->
-  <section id="ebay-store" class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Visit Our eBay Store</h1>
-      <p>Discover exclusive retro games, merchandise, and more on our eBay store!</p>
-      <a href="https://www.ebay.com/str/vondoomsretrooasis" target="_blank" class="cta-button">Shop on eBay</a>
-    </div>
-  </section>
+    <!-- Gaming News Section -->
+    <section id="gaming-news" class="section">
+      <div class="section-header">
+        <h2>Gaming News</h2>
+        <p>Stay updated with the latest news and trends in the gaming world.</p>
+      </div>
+      <div class="news-grid">
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Exciting New Game Release</h3>
+          <p class="news-synopsis">Discover the latest game release that has taken the gaming world by storm. Find out what makes it so special!</p>
+          <button class="read-more">Read More</button>
+        </div>
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Top 10 Retro Games of All Time</h3>
+          <p class="news-synopsis">Take a nostalgic trip down memory lane with our list of the top 10 retro games that defined an era.</p>
+          <button class="read-more">Read More</button>
+        </div>
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Gaming Industry Trends in 2023</h3>
+          <p class="news-synopsis">Explore the latest trends shaping the gaming industry in 2023 and what they mean for gamers and developers alike.</p>
+          <button class="read-more">Read More</button>
+        </div>
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Upcoming Gaming Events</h3>
+          <p class="news-synopsis">Don't miss out on the biggest gaming events happening this year. Mark your calendars!</p>
+          <button class="read-more">Read More</button>
+        </div>
+      </div>
+    </section>
 
-  <!-- Gaming News Section -->
-  <section id="gaming-news" class="section">
-    <div class="section-header">
-      <h2>Gaming News</h2>
-      <p>Stay updated with the latest news and trends in the gaming world.</p>
-    </div>
-    <div class="news-grid">
-      <div class="news-card">
-        <a href="https://example.com/article1" target="_blank">
-          <img src="https://via.placeholder.com/300x200.png?text=Article+1" alt="Article 1">
-        </a>
-        <h3>Exciting New Game Release</h3>
+    <!-- Merchandise Section -->
+    <section id="merch" class="section">
+      <div class="section-header">
+        <h2>Merchandise</h2>
+        <p>We’re expanding our lineup with T-shirts, mugs, posters, and more retro-inspired merchandise!</p>
       </div>
-      <div class="news-card">
-        <a href="https://example.com/article2" target="_blank">
-          <img src="https://via.placeholder.com/300x200.png?text=Article+2" alt="Article 2">
-        </a>
-        <h3>Top 10 Retro Games of All Time</h3>
-      </div>
-      <div class="news-card">
-        <a href="https://example.com/article3" target="_blank">
-          <img src="https://via.placeholder.com/300x200.png?text=Article+3" alt="Article 3">
-        </a>
-        <h3>Gaming Industry Trends in 2023</h3>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Merchandise Section -->
-  <section id="merch" class="section">
-    <div class="section-header">
-      <h2>Merchandise</h2>
-      <p>We’re expanding our lineup with T-shirts, mugs, posters, and more retro-inspired merchandise!</p>
-    </div>
-    <div class="product-grid">
-      <div class="product-card">
-        <div class="product-overlay"></div>
-        <div class="product-shine"></div>
-        <img src="https://via.placeholder.com/300x300.png?text=T-Shirt" alt="T-Shirt">
-        <h3>Retro Oasis T-Shirt</h3>
-        <div class="size-boxes">
-          <span>Small</span>
-          <span>Medium</span>
-          <span>Large</span>
+      <div class="product-grid">
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Charizard Car Decal</h3>
+          <img src="images/merchandise_images/Tile_1.svg" alt="T-Shirt" loading="lazy">
+          <button>Buy Now</button>
         </div>
-        <button>Buy Now</button>
-      </div>
-      <div class="product-card">
-        <div class="product-overlay"></div>
-        <div class="product-shine"></div>
-        <img src="https://via.placeholder.com/300x300.png?text=Mug" alt="Mug">
-        <h3>Arcade Mug</h3>
-        <div class="size-boxes">
-          <span>4"x4"</span>
-          <span>6"x6"</span>
-          <span>10"x10"</span>
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Arcade Mug</h3>
+          <img src="https://via.placeholder.com/300x300.png?text=Mug" alt="Mug" loading="lazy">
+          <button>Buy Now</button>
         </div>
-        <button>Buy Now</button>
-      </div>
-      <div class="product-card">
-        <div class="product-overlay"></div>
-        <div class="product-shine"></div>
-        <img src="https://via.placeholder.com/300x300.png?text=Poster" alt="Poster">
-        <h3>Retro Poster</h3>
-        <div class="size-boxes">
-          <span>12"x18"</span>
-          <span>18"x24"</span>
-          <span>24"x36"</span>
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Retro Poster</h3>
+          <img src="https://via.placeholder.com/300x300.png?text=Poster" alt="Poster" loading="lazy">
+          <button>Buy Now</button>
         </div>
-        <button>Buy Now</button>
-      </div>
-      <div class="product-card">
-        <div class="product-overlay"></div>
-        <div class="product-shine"></div>
-        <img src="https://via.placeholder.com/300x300.png?text=Decal" alt="Decal">
-        <h3>Custom Decal</h3>
-        <div class="size-boxes">
-          <span>4"x4"</span>
-          <span>6"x6"</span>
-          <span>10"x10"</span>
+        <div class="tile-card">
+          <div class="news-overlay"></div>
+          <div class="news-shine"></div>
+          <h3>Custom Decal</h3>
+          <img src="https://via.placeholder.com/300x300.png?text=Decal" alt="Decal" loading="lazy">
+          <button>Buy Now</button>
         </div>
-        <button>Buy Now</button>
       </div>
-    </div>
-  </section>
-  
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <div class="section-header">
-      <h2>Stay in Touch</h2>
-      <p>Subscribe to our newsletter for the latest updates, exclusive offers, and retro insights!</p>
-    </div>
-    <form>
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
-  
-  <!-- Footer -->
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="section-header">
+        <h2>Stay in Touch</h2>
+        <p>Subscribe to our newsletter for the latest updates, exclusive offers, and retro insights!</p>
+      </div>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
   <footer>
     <div class="footer-content">
       <p>&copy; <span id="year"></span> VonDoom's Retro Oasis. All Rights Reserved.</p>
@@ -170,7 +178,7 @@
       </div>
     </div>
   </footer>
-  
+
   <script>
     // Set current year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -233,6 +241,12 @@
     }
 
     updateToggleIconMobile(savedTheme);
+
+    // Hide spinner after page loads
+    window.addEventListener('load', () => {
+      const spinner = document.getElementById('loading-spinner');
+      spinner.style.display = 'none';
+    });
   </script>
 </body>
 </html>

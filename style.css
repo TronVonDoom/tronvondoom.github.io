@@ -1,13 +1,13 @@
 /* CSS Variables for Themes */
 :root {
-  --primary-bg: #f4f4f4;
-  --primary-text: #333;
-  --accent-color: #ff00a0;
-  --secondary-bg: #fff;
-  --header-bg: #222;
-  --header-text: #fff;
-  --card-bg: #fff;
-  --card-border: #ddd;
+  --primary-bg: #eaeaea; /* Softer background color */
+  --primary-text: #444; /* Slightly darker text for better contrast */
+  --accent-color: #ff4081; /* Calmer accent color */
+  --secondary-bg: #f7f7f7; /* Softer secondary background */
+  --header-bg: #333; /* Darker header background for better contrast */
+  --header-text: #fff; /* Keep header text white */
+  --card-bg: #fdfdfd; /* Softer card background */
+  --card-border: #ccc; /* Softer border color */
 }
 
 [data-theme="dark"] {
@@ -309,11 +309,11 @@ nav ul li a:hover {
   color: var(--header-text);
 }
 .hero-content h1 {
-  font-size: 2.5rem;
+  font-size: 2rem; /* reduced from 2.5rem */
   margin-bottom: 1rem;
 }
 .hero-content p {
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* reduced from 1.1rem */
   margin-bottom: 2rem;
 }
 .cta-button {
@@ -341,123 +341,185 @@ nav ul li a:hover {
   margin-bottom: 2rem;
 }
 .section-header h2 {
-  font-size: 2rem;
+  font-size: 1.6rem; /* reduced from 2rem */
   margin-bottom: 0.5rem;
   color: var(--primary-text);
 }
 .section-header p {
-  font-size: 1rem;
+  font-size: 0.85rem; /* reduced from 1rem */
   color: var(--primary-text);
 }
 
-/* Product Grid */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four tiles across */
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.product-card {
-  position: relative;
-  background: url('images/backgrounds/tiles/tile_bg.png') no-repeat center center/cover;
+/* Tile Card */
+.tile-card {
+  position: relative; /* Enable positioning for child elements */
+  background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1; /* Square tile */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space out content */
-  align-items: center;
-  padding: 1rem;
+  justify-content: flex-start;
+  padding: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.product-card:hover {
-  transform: translateY(-10px) scale(1.05); /* 3D hover effect */
+.tile-card:hover {
+  transform: translateY(-10px) scale(1.05);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
-.product-overlay {
+
+.tile-card .product-overlay, 
+.tile-card .news-overlay { /* Use one rule for both overlays */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.1)); /* Gradient overlay */
+  background: linear-gradient(145deg, rgba(0,0,0,0.3), rgba(255,255,255,0.1));
   z-index: 1;
-  pointer-events: none; /* Prevent interaction with the overlay */
+  pointer-events: none;
   transition: background 0.3s ease;
 }
-.product-card:hover .product-overlay {
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.2)); /* Darker overlay on hover */
+.tile-card:hover .product-overlay, 
+.tile-card:hover .news-overlay {
+  background: linear-gradient(145deg, rgba(0,0,0,0.5), rgba(255,255,255,0.2));
 }
-.product-shine {
+.tile-card .product-shine, 
+.tile-card .news-shine {
   position: absolute;
   top: -100%;
   left: -100%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  background: linear-gradient(45deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
   transform: rotate(45deg);
   transition: transform 0.5s ease;
   z-index: 2;
   pointer-events: none;
 }
-.product-card:hover .product-shine {
-  transform: translate(100%, 100%) rotate(45deg); /* Shine effect on hover */
+.tile-card:hover .product-shine, 
+.tile-card:hover .news-shine {
+  transform: translate(100%, 100%) rotate(45deg);
 }
-.product-card img {
-  width: 60%; /* Center and scale the image */
+.tile-card img {
+  width: 60%;
   height: auto;
   margin: 0 auto;
 }
-.product-card h3 {
-  font-size: 1.2rem;
+.tile-card h3 {
+  font-size: 1rem; /* reduced from 1.2rem */
   margin: 0.5rem 0;
   color: var(--primary-text);
 }
-.size-boxes {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: 1rem;
+
+/* Merchandise Tile Specifics */
+#merch .tile-card {
+  position: relative; /* Ensure positioning context for absolutely positioned children */
 }
-.size-boxes span {
-  background: var(--secondary-bg);
-  color: var(--primary-text);
-  border: 1px solid var(--card-border);
-  border-radius: 4px;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.9rem;
-  white-space: nowrap;
+
+#merch .tile-card h3 {
+  position: absolute;
+  top: 0; /* Very close to upper edge */
+  left: 0;
+  width: 100%;
+  margin: 0; /* Remove extra margin */
+  z-index: 2;
+  /* Optionally center align text */
+  text-align: center;
 }
-.product-card button {
+
+#merch .tile-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure full image is visible */
+  z-index: 1; /* Behind all text and buttons */
+  transition: transform 0.5s ease;
+  transform: scale(0.9);
+}
+
+#merch .tile-card:hover img {
+  transform: scale(0.95); /* Slightly enlarge on hover */
+}
+
+/* Ensure SVG merchandise images are behind all text and controls */
+#merch .tile-card img {
+  z-index: 1; /* already positioned absolutely */
+  /* object-fit, transition, and transform remain unchanged */
+}
+
+/* Bring buttons above the image */
+.tile-card button,
+.tile-card .read-more {
+  z-index: 3;
+}
+
+/* Make the SVG image match the theme's color */
+[data-theme="dark"] #merch .tile-card img {
+  filter: invert(100%) sepia(20%) saturate(500%) hue-rotate(180deg);
+}
+[data-theme="light"] #merch .tile-card img {
+  filter: none;
+}
+
+/* Uniform Button Styling for All Tiles */
+.tile-card button,
+.tile-card .read-more {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 0.6rem 0;
+  font-size: 1rem;
   background: var(--accent-color);
   color: var(--header-text);
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
   cursor: pointer;
-  border-radius: 4px;
   transition: background 0.3s ease;
-  align-self: stretch; /* Stretch button to full width */
+  text-align: center;
 }
-.product-card button:hover {
+.tile-card button:hover,
+.tile-card .read-more:hover {
   background: #e6008a;
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr); /* Two tiles across */
+  .tile-card .size-boxes span {
+    font-size: 0.7rem; /* Adjust font size for smaller screens */
+    padding: 0.1rem 0.3rem; /* Adjust padding for smaller screens */
   }
 }
 
 @media (max-width: 480px) {
-  .product-grid {
-    grid-template-columns: 1fr; /* One tile across */
+  .tile-card {
+    padding: 1rem; /* Reduce padding for smaller screens */
   }
+
+  .tile-card h3 {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  .tile-card button {
+    font-size: 0.9rem; /* Adjust button font size for smaller screens */
+    padding: 0.5rem 0.8rem; /* Adjust button padding for smaller screens */
+  }
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Custom Game Section */
@@ -480,12 +542,12 @@ nav ul li a:hover {
   text-align: left;
 }
 .game-info h3 {
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* reduced from 1.8rem */
   margin-bottom: 1rem;
   color: var(--primary-text);
 }
 .game-info p {
-  font-size: 1rem;
+  font-size: 0.9rem; /* reduced from 1rem */
   margin-bottom: 1.5rem;
   color: var(--primary-text);
 }
@@ -581,32 +643,36 @@ nav ul li a:hover {
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* Four tiles across */
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.news-card {
-  text-align: center;
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .news-grid, .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two tiles across */
+  }
 }
 
-.news-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px; /* Rounded corners for images */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+@media (max-width: 480px) {
+  .news-grid, .product-grid {
+    grid-template-columns: 1fr; /* One tile across */
+  }
 
-.news-card img:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+  .tile-card {
+    padding: 1rem; /* Reduce padding for smaller screens */
+  }
 
-.news-card h3 {
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
-  color: var(--primary-text);
+  .tile-card h3 {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  .tile-card button {
+    font-size: 0.9rem; /* Adjust button font size for smaller screens */
+    padding: 0.5rem 0.8rem; /* Adjust button padding for smaller screens */
+  }
 }
 
 /* Contact Section */
@@ -712,7 +778,7 @@ footer {
   }
 
   .hero-content p {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .cta-button {
@@ -722,11 +788,11 @@ footer {
 
   /* Section Headers */
   .section-header h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .section-header p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   /* Product Grid */
@@ -735,11 +801,11 @@ footer {
     gap: 1.5rem;
   }
 
-  .product-card {
+  .tile-card {
     padding: 1rem;
   }
 
-  .product-card img {
+  .tile-card img {
     margin-bottom: 0.5rem;
   }
 
@@ -850,20 +916,16 @@ footer {
     font-size: 0.8rem;
   }
 
-  /* Product Cards */
+  /* Tile Cards */
   .product-grid {
     grid-template-columns: 1fr; /* One tile across */
   }
 
-  .product-card h3 {
+  .tile-card h3 {
     font-size: 1rem;
   }
 
-  .product-card p {
-    font-size: 0.8rem;
-  }
-
-  .product-card button {
+  .tile-card button {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
   }
@@ -906,5 +968,45 @@ footer {
 
   .social-links a {
     font-size: 0.9rem;
+  }
+}
+
+/* Error Page */
+.error-page {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.error-page h1 {
+  font-size: 4rem;
+  color: var(--accent-color);
+}
+
+.error-page p {
+  font-size: 1.2rem;
+  color: var(--primary-text);
+  margin-bottom: 2rem;
+}
+
+/* Loading Spinner */
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
