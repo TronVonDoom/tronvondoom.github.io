@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="VonDoom's Retro Oasis - Used Video Games, Custom Games, and Retro Merchandise">
-  <meta name="keywords" content="Retro, Games, Used Games, Custom Game, Car Decals, Merchandise">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VonDoom's Retro Oasis</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -125,36 +124,70 @@
         <p>We’re expanding our lineup with T-shirts, mugs, posters, and more retro-inspired merchandise!</p>
       </div>
       <div class="product-grid">
-        <div class="tile-card">
+        <!-- Merchandise Tile Template -->
+        <div class="tile-card merchandise-tile">
           <div class="news-overlay"></div>
           <div class="news-shine"></div>
-          <h3>Charizard Car Decal</h3>
-          <img src="images/merchandise_images/Tile_1.svg" alt="T-Shirt" loading="lazy">
-          <button>Buy Now</button>
+          <h3>T-Shirt</h3>
+          <div class="svg-container">
+            <svg class="merchandise-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10 h80 v80 h-80 z" fill="#000000"></path>
+            </svg>
+          </div>
+          <button class="view-item-btn">View Item</button>
         </div>
-        <div class="tile-card">
+        <div class="tile-card merchandise-tile">
           <div class="news-overlay"></div>
           <div class="news-shine"></div>
           <h3>Arcade Mug</h3>
-          <img src="https://via.placeholder.com/300x300.png?text=Mug" alt="Mug" loading="lazy">
-          <button>Buy Now</button>
+          <div class="svg-container">
+            <svg class="merchandise-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10 h80 v80 h-80 z" fill="#000000"></path>
+            </svg>
+          </div>
+          <button class="view-item-btn">View Item</button>
         </div>
-        <div class="tile-card">
+        <div class="tile-card merchandise-tile">
           <div class="news-overlay"></div>
           <div class="news-shine"></div>
           <h3>Retro Poster</h3>
-          <img src="https://via.placeholder.com/300x300.png?text=Poster" alt="Poster" loading="lazy">
-          <button>Buy Now</button>
+          <div class="svg-container">
+            <svg class="merchandise-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10 h80 v80 h-80 z" fill="#000000"></path>
+            </svg>
+          </div>
+          <button class="view-item-btn">View Item</button>
         </div>
-        <div class="tile-card">
+        <div class="tile-card merchandise-tile">
           <div class="news-overlay"></div>
           <div class="news-shine"></div>
           <h3>Custom Decal</h3>
-          <img src="https://via.placeholder.com/300x300.png?text=Decal" alt="Decal" loading="lazy">
-          <button>Buy Now</button>
+          <div class="svg-container">
+            <svg class="merchandise-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10 h80 v80 h-80 z" fill="#000000"></path>
+            </svg>
+          </div>
+          <button class="view-item-btn">View Item</button>
         </div>
       </div>
     </section>
+
+    <!-- Modal Markup -->
+    <div id="item-modal" class="modal">
+      <div class="modal-content">
+        <h2>Custom Car Decal</h2>
+        <div class="modal-svg-container">
+          <svg id="modal-car-decal-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 10 h80 v80 h-80 z" fill="#000000"></path>
+          </svg>
+        </div>
+        <p>Here is detailed product information and additional customization options for your custom car decal.</p>
+        <!-- Added desktop close button -->
+        <button id="modal-close-desktop" class="modal-close-desktop">Close</button>
+      </div>
+      <!-- Fixed Close button for mobile -->
+      <button id="modal-close-fixed" class="modal-close-fixed">Close</button>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
@@ -246,6 +279,102 @@
     window.addEventListener('load', () => {
       const spinner = document.getElementById('loading-spinner');
       spinner.style.display = 'none';
+    });
+
+    // Modal functionality
+    const modal = document.getElementById('item-modal');
+
+    // When opening the modal on mobile, add the "modal-mobile" class
+    function openModal() {
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        modal.classList.add('modal-mobile');
+      } else {
+        modal.classList.remove('modal-mobile');
+      }
+      modal.style.display = 'block';
+    }
+
+    // Updated modal functionality for merchandise tiles
+    const viewItemBtns = document.querySelectorAll('.view-item-btn');
+    viewItemBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        openModal();
+        const tile = e.target.closest('.merchandise-tile');
+        const title = tile.querySelector('h3').innerText;
+        modal.querySelector('h2').innerText = title;
+        const tileSvg = tile.querySelector('.merchandise-svg');
+        const modalSvg = document.getElementById('modal-car-decal-svg');
+        if (tileSvg && modalSvg) {
+          const path = tileSvg.querySelector('path');
+          const modalPath = modalSvg.querySelector('path');
+          if (path && modalPath) {
+            modalPath.setAttribute('fill', path.getAttribute('fill'));
+          }
+        }
+        // Ensure SVG is visible for merchandise
+        const svgContainer = modal.querySelector('.modal-svg-container');
+        if (svgContainer) {
+          svgContainer.style.display = '';
+        }
+      });
+    });
+
+    // Updated modal functionality for news tiles
+    const readMoreBtns = document.querySelectorAll('.read-more');
+    readMoreBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        openModal();
+        const tile = e.target.closest('.tile-card');
+        const title = tile.querySelector('h3').innerText;
+        const synopsisElement = tile.querySelector('.news-synopsis');
+        const synopsis = synopsisElement ? synopsisElement.innerText : '';
+        modal.querySelector('h2').innerText = title;
+        modal.querySelector('p').innerText = synopsis;
+        const svgContainer = modal.querySelector('.modal-svg-container');
+        if (svgContainer) {
+          svgContainer.style.display = '';
+        }
+      });
+    });
+
+    document.getElementById('modal-close-desktop').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    document.getElementById('modal-close-fixed').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Add touch event listeners for modal swipe-to-dismiss in mobile mode
+    let touchStartY = 0;
+    let touchCurrentY = 0;
+    const swipeThreshold = 100; // pixels to trigger modal dismissal
+
+    modal.addEventListener('touchstart', (event) => {
+      touchStartY = event.touches[0].clientY;
+    });
+
+    modal.addEventListener('touchmove', (event) => {
+      touchCurrentY = event.touches[0].clientY;
+      const diffY = touchCurrentY - touchStartY;
+      if (diffY > 0) { // only move downward
+        modal.querySelector('.modal-content').style.transform = `translateY(${diffY}px)`;
+      }
+    });
+
+    modal.addEventListener('touchend', () => {
+      const diffY = touchCurrentY - touchStartY;
+      if (diffY > swipeThreshold) {
+        modal.style.display = 'none';
+      }
+      // Reset transform regardless of whether modal is closed
+      modal.querySelector('.modal-content').style.transform = '';
     });
   </script>
 </body>
