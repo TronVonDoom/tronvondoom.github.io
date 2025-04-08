@@ -68,40 +68,44 @@ const modalCloseFixed = document.getElementById('modal-close-fixed');
 // Product data
 const products = [
   {
-    title: "Samus Aran Chibi (No Helmet)",
-    image: "assets/images/products/samus-chibi-no-helmet.png",
-    price: "$24.99",
-    description: "Show off your love for the Metroid series with this adorable Samus Aran Chibi car decal!",
-    link: "https://www.ebay.com/itm/example-tshirt",
     category: "Car Decal",
-    colors: ["white", "black", "red", "green", "blue", "yellow"]
+    title: "Samus Aran Chibi (No Helmet)",
+    colors: ["white", "black", "red", "green", "blue", "yellow", "purple"],
+    description: "Show off your love for the Metroid series with this adorable Samus Aran Chibi car decal!",
+    image: "assets/images/products/decal_rear_window.png",
+    overlayImage: "assets/images/products/decal_samus-chibi-no-helmet.png", // Overlay image
+    price: "$24.99",
+    link: "https://www.ebay.com/itm/example-tshirt"
   },
   {
-    title: "Gengar",
-    image: "assets/images/products/gengar.png",
-    price: "$14.99",
-    description: "Enjoy your favorite beverage in this retro arcade-themed mug.",
-    link: "https://www.ebay.com/itm/example-mug",
-    category: "Accessories",
-    colors: ["#000000", "#FFFFFF"]
+    category: "Car Decal",
+    title: "Menacing Gengar",
+    colors: ["white", "black", "red", "green", "blue", "yellow", "purple"],
+    description: "Show off your love for the Metroid series with this adorable Samus Aran Chibi car decal!",
+    image: "assets/images/products/decal_rear_window.png",
+    overlayImage: "assets/images/products/decal_gengar.png", // Overlay image
+    price: "$24.99",
+    link: "https://www.ebay.com/itm/example-tshirt"
   },
   {
-    title: "Retro Poster",
-    image: "assets/images/products/retro-poster.jpg",
-    price: "$9.99",
-    description: "Decorate your space with this vibrant retro gaming poster.",
-    link: "https://www.ebay.com/itm/example-poster",
-    category: "Decor",
-    colors: ["#FFD700", "#FF4500"]
+    category: "Car Decal",
+    title: "#",
+    colors: ["white", "black", "red", "green", "blue", "yellow", "purple"],
+    description: "#",
+    image: "assets/images/products/#.png",
+    overlayImage: "assets/images/overlays/default-overlay.png", // Overlay image
+    price: "$24.99",
+    link: "https://www.ebay.com/itm/example-tshirt"
   },
   {
-    title: "Custom Decal",
-    image: "assets/images/products/custom-decal.jpg",
-    price: "$4.99",
-    description: "Personalize your gear with this custom retro gaming decal.",
-    link: "https://www.ebay.com/itm/example-decal",
-    category: "Custom",
-    colors: ["#8A2BE2", "#7FFF00"]
+    category: "Car Decal",
+    title: "#",
+    colors: ["white", "black", "red", "green", "blue", "yellow", "purple"],
+    description: "#",
+    image: "assets/images/products/#.png",
+    overlayImage: "assets/images/overlays/default-overlay.png", // Overlay image
+    price: "$24.99",
+    link: "https://www.ebay.com/itm/example-tshirt"
   }
 ];
 
@@ -110,10 +114,11 @@ const productGrid = document.querySelector('.product-grid');
 products.forEach(product => {
   const tile = document.createElement('div');
   tile.className = 'tile-card merchandise-tile';
-  tile.style.backgroundImage = `url(${product.image})`; // Set thumbnail as background
+  tile.style.backgroundImage = `url(${product.image})`; // Set background image
   tile.style.backgroundSize = 'cover';
   tile.style.backgroundPosition = 'center';
   tile.innerHTML = `
+    <div class="tile-overlay" style="background-image: url(${product.overlayImage}); filter: brightness(0) saturate(100%) invert(100%);"></div> <!-- Default white overlay -->
     <div class="news-overlay"></div>
     <div class="news-shine"></div>
     <h3>${product.title}</h3>
@@ -135,6 +140,7 @@ productGrid.addEventListener('click', (event) => {
       const modalDescription = modal.querySelector('.modal-details p');
       const modalButton = modal.querySelector('.modal-details .cta-button');
       const modalImage = modal.querySelector('.modal-svg-container img');
+      const modalOverlay = modal.querySelector('.modal-overlay'); // Overlay element
 
       modalCategory.innerText = product.category || "Uncategorized"; // Set category
       modalTitle.innerText = product.title;
@@ -142,6 +148,8 @@ productGrid.addEventListener('click', (event) => {
       modalButton.innerText = `${product.price} on eBay`; // Update button text
       modalButton.href = product.link;
       modalImage.src = product.image;
+      modalOverlay.style.backgroundImage = `url(${product.overlayImage})`; // Set overlay image
+      modalOverlay.style.filter = "brightness(0) saturate(100%) invert(100%)"; // Default white overlay
 
       // Populate color swatches
       modalSwatches.innerHTML = ""; // Clear existing swatches
@@ -149,6 +157,12 @@ productGrid.addEventListener('click', (event) => {
         const swatch = document.createElement('span');
         swatch.className = 'color-swatch';
         swatch.style.backgroundColor = color;
+
+        // Add click event to change overlay color
+        swatch.addEventListener('click', () => {
+          modalOverlay.style.filter = getFilterForColor(color);
+        });
+
         modalSwatches.appendChild(swatch);
       });
 
@@ -156,6 +170,20 @@ productGrid.addEventListener('click', (event) => {
     }
   }
 });
+
+// Helper function to calculate filter for a given color
+function getFilterForColor(color) {
+  const colorMap = {
+    red: "brightness(0) saturate(100%) invert(21%) sepia(92%) saturate(7481%) hue-rotate(1deg) brightness(96%) contrast(105%)",
+    green: "brightness(0) saturate(100%) invert(48%) sepia(91%) saturate(748%) hue-rotate(89deg) brightness(90%) contrast(85%)",
+    blue: "brightness(0) saturate(100%) invert(32%) sepia(100%) saturate(7500%) hue-rotate(190deg) brightness(90%) contrast(85%)",
+    yellow: "brightness(0) saturate(100%) invert(84%) sepia(100%) saturate(7500%) hue-rotate(1deg) brightness(90%) contrast(85%)",
+    black: "brightness(0) saturate(100%) invert(0%)",
+    white: "brightness(0) saturate(100%) invert(100%)",
+    purple: "brightness(0) saturate(100%) invert(25%) sepia(100%) saturate(7500%) hue-rotate(270deg) brightness(90%) contrast(85%)" // Added purple
+  };
+  return colorMap[color] || "brightness(0) saturate(100%) invert(100%)"; // Default to white
+}
 
 // Close modal functionality
 const closeModal = () => {

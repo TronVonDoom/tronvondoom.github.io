@@ -359,8 +359,8 @@
   /* Tile Card */
   .tile-card {
     position: relative;
-    background-size: cover; /* Ensure background image covers the tile */
-    background-position: center; /* Center the background image */
+    background-size: cover;
+    background-position: center;
     border-radius: 12px;
     overflow: hidden;
     text-align: center;
@@ -379,6 +379,21 @@
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   }
   
+  .tile-card .tile-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    filter: brightness(0) saturate(100%) invert(100%); /* Default white color */
+    opacity: 0.8; /* Slight transparency */
+  }
+
   .tile-card .product-overlay { /* Use one rule for both overlays */
     position: absolute;
     top: 0;
@@ -1036,6 +1051,7 @@
   }
   
   .modal-svg-container {
+    position: relative;
     flex: 0 0 40%; /* Image takes 40% of the modal width */
     display: flex;
     align-items: flex-start; /* Align image to the top */
@@ -1050,6 +1066,22 @@
     height: auto;
     border-radius: 8px;
     border: 2px solid var(--accent-color);
+  }
+
+  .modal-svg-container .modal-overlay {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    filter: brightness(0) saturate(100%) invert(100%); /* Default white color */
+    opacity: 0.8; /* Slight transparency */
+    transition: filter 0.3s ease; /* Smooth transition for color changes */
   }
   
   .modal-details {
