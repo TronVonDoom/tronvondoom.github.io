@@ -379,8 +379,7 @@
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   }
   
-  .tile-card .product-overlay, 
-  .tile-card .news-overlay { /* Use one rule for both overlays */
+  .tile-card .product-overlay { /* Use one rule for both overlays */
     position: absolute;
     top: 0;
     left: 0;
@@ -1030,16 +1029,18 @@
     max-width: 1000px; /* Wider modal for desktop */
     position: relative;
     border-radius: 8px;
-    display: flex;
-    flex-wrap: nowrap; /* Ensure image and details are side by side */
-    gap: 2rem;
+    display: flex; /* Ensure image and details are side by side */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    align-items: flex-start; /* Align content to the top */
+    gap: 2rem; /* Add spacing between image and details */
   }
   
   .modal-svg-container {
-    flex: 1 1 40%; /* Image takes 40% of the modal width */
+    flex: 0 0 40%; /* Image takes 40% of the modal width */
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align image to the top */
     justify-content: center;
+    margin: 0; /* Remove any additional margin */
   }
   
   .modal-svg-container img, 
@@ -1056,6 +1057,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    gap: 0.5rem; /* Reduce spacing between elements */
   }
   
   .modal-details h2 {
@@ -1064,9 +1066,14 @@
     color: var(--primary-text);
   }
   
+  .modal-details h3 {
+    margin-top: -1rem; /* Bring the title closer to the description */
+    margin-bottom: 0.5rem; /* Reduce spacing below the title */
+  }
+  
   .modal-details p {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* Keep consistent spacing below the description */
     text-align: justify;
     color: var(--primary-text);
   }
@@ -1076,6 +1083,50 @@
     font-weight: bold;
     margin-bottom: 1rem;
     color: var(--accent-color);
+  }
+  
+  .modal-details .category {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-top: -0.35rem; /* Bring the category closer to the title */
+    margin-bottom: 0rem; /* Bring the title closer to the category */
+  }
+
+  .modal-details .color-swatches {
+    display: flex;
+    gap: 0.4rem; /* Slightly reduce spacing between swatches */
+    margin-bottom: 0.8rem; /* Bring the description closer to the swatches */
+  }
+
+  .modal-details .color-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .modal-details .color-swatch:hover {
+    transform: scale(1.2);
+  }
+
+  .modal-details .cta-button {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent-color);
+    color: var(--header-text);
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease;
+  }
+
+  .modal-details .cta-button:hover {
+    background: #e6008a;
   }
   
   .modal-details .cta-button {

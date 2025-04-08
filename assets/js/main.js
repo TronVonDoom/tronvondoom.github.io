@@ -68,32 +68,40 @@ const modalCloseFixed = document.getElementById('modal-close-fixed');
 // Product data
 const products = [
   {
-    title: "Samus Aran Chibi (No Helmet) Car Decal",
+    title: "Samus Aran Chibi (No Helmet)",
     image: "assets/images/products/samus-chibi-no-helmet.png",
     price: "$24.99",
-    description: "Show off your love for the Metroid series with this adorable Samus Aran Chibi car decal! Featuring a helmetless Samus in a charming chibi style, this high-quality vinyl decal is perfect for cars, laptops, water bottles, and more. The vibrant colors and intricate design capture the essence of Samus's iconic look, making it a standout piece for any fan. Durable, weatherproof, and easy to apply, this decal is built to last and withstand the elements. Whether you're a long-time Metroid enthusiast or a newcomer to the series, this decal is a great way to showcase your passion for gaming. It's also a fantastic gift idea for friends or family who share your love for retro games and collectibles. Add a touch of nostalgia to your everyday items with this must-have accessory!",
-    link: "https://www.ebay.com/itm/example-tshirt"
+    description: "Show off your love for the Metroid series with this adorable Samus Aran Chibi car decal!",
+    link: "https://www.ebay.com/itm/example-tshirt",
+    category: "Car Decal",
+    colors: ["white", "black", "red", "green", "blue", "yellow"]
   },
   {
-    title: "Gengar Car Decal",
+    title: "Gengar",
     image: "assets/images/products/gengar.png",
     price: "$14.99",
     description: "Enjoy your favorite beverage in this retro arcade-themed mug.",
-    link: "https://www.ebay.com/itm/example-mug"
+    link: "https://www.ebay.com/itm/example-mug",
+    category: "Accessories",
+    colors: ["#000000", "#FFFFFF"]
   },
   {
     title: "Retro Poster",
     image: "assets/images/products/retro-poster.jpg",
     price: "$9.99",
     description: "Decorate your space with this vibrant retro gaming poster.",
-    link: "https://www.ebay.com/itm/example-poster"
+    link: "https://www.ebay.com/itm/example-poster",
+    category: "Decor",
+    colors: ["#FFD700", "#FF4500"]
   },
   {
     title: "Custom Decal",
     image: "assets/images/products/custom-decal.jpg",
     price: "$4.99",
     description: "Personalize your gear with this custom retro gaming decal.",
-    link: "https://www.ebay.com/itm/example-decal"
+    link: "https://www.ebay.com/itm/example-decal",
+    category: "Custom",
+    colors: ["#8A2BE2", "#7FFF00"]
   }
 ];
 
@@ -121,17 +129,28 @@ productGrid.addEventListener('click', (event) => {
     const product = products.find(p => p.title === tile.querySelector('h3').innerText);
 
     if (product) {
-      const modalTitle = modal.querySelector('.modal-details h3'); // Changed from h2 to h3
-      const modalPrice = modal.querySelector('.modal-details .price');
+      const modalCategory = modal.querySelector('.modal-details .category');
+      const modalTitle = modal.querySelector('.modal-details h3');
+      const modalSwatches = modal.querySelector('.modal-details .color-swatches');
       const modalDescription = modal.querySelector('.modal-details p');
       const modalButton = modal.querySelector('.modal-details .cta-button');
       const modalImage = modal.querySelector('.modal-svg-container img');
 
+      modalCategory.innerText = product.category || "Uncategorized"; // Set category
       modalTitle.innerText = product.title;
-      modalPrice.innerText = product.price;
       modalDescription.innerText = product.description;
+      modalButton.innerText = `${product.price} on eBay`; // Update button text
       modalButton.href = product.link;
       modalImage.src = product.image;
+
+      // Populate color swatches
+      modalSwatches.innerHTML = ""; // Clear existing swatches
+      (product.colors || []).forEach(color => {
+        const swatch = document.createElement('span');
+        swatch.className = 'color-swatch';
+        swatch.style.backgroundColor = color;
+        modalSwatches.appendChild(swatch);
+      });
 
       modal.style.display = 'block';
     }
