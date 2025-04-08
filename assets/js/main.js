@@ -4,6 +4,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // Theme toggle logic
 const toggleButton = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
+const mobileToggleButton = document.getElementById('theme-toggle-mobile');
+const mobileThemeIcon = document.getElementById('theme-icon-mobile');
 
 function updateToggleIcon(theme) {
   if (theme === 'dark') {
@@ -14,21 +16,6 @@ function updateToggleIcon(theme) {
   themeIcon.style.filter = "brightness(0) saturate(100%) invert(100%)";
 }
 
-const savedTheme = localStorage.getItem('theme') || 'dark';
-document.body.setAttribute('data-theme', savedTheme);
-updateToggleIcon(savedTheme);
-
-toggleButton.addEventListener('click', () => {
-  const currentTheme = document.body.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  document.body.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateToggleIcon(newTheme);
-});
-
-const mobileToggleButton = document.getElementById('theme-toggle-mobile');
-const mobileThemeIcon = document.getElementById('theme-icon-mobile');
-
 function updateMobileToggleIcon(theme) {
   if (theme === 'dark') {
     mobileThemeIcon.src = "assets/images/icons/Moon.svg";
@@ -38,17 +25,24 @@ function updateMobileToggleIcon(theme) {
   mobileThemeIcon.style.filter = "brightness(0) saturate(100%) invert(100%)";
 }
 
-// Ensure the mobile theme toggle button reflects the saved theme
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.body.setAttribute('data-theme', savedTheme);
+updateToggleIcon(savedTheme);
 updateMobileToggleIcon(savedTheme);
 
-mobileToggleButton.addEventListener('click', () => {
+// Reusable function to toggle theme
+function toggleTheme() {
   const currentTheme = document.body.getAttribute('data-theme');
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   document.body.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
-  updateToggleIcon(newTheme); // Update desktop icon
-  updateMobileToggleIcon(newTheme); // Update mobile icon
-});
+  updateToggleIcon(newTheme);
+  updateMobileToggleIcon(newTheme);
+}
+
+// Update both desktop and mobile theme toggle buttons
+toggleButton.addEventListener('click', toggleTheme);
+mobileToggleButton.addEventListener('click', toggleTheme);
 
 // Hamburger menu toggle
 const hamburgerMenu = document.getElementById('hamburger-menu');
@@ -81,8 +75,8 @@ const products = [
     link: "https://www.ebay.com/itm/example-tshirt"
   },
   {
-    title: "Arcade Mug",
-    image: "assets/images/products/arcade-mug.jpg",
+    title: "Gengar Car Decal",
+    image: "assets/images/products/gengar.png",
     price: "$14.99",
     description: "Enjoy your favorite beverage in this retro arcade-themed mug.",
     link: "https://www.ebay.com/itm/example-mug"
@@ -118,23 +112,30 @@ products.forEach(product => {
     <button class="view-item-btn">View Item</button>
   `;
   productGrid.appendChild(tile);
+});
 
-  // Add event listener for the modal
-  tile.querySelector('.view-item-btn').addEventListener('click', () => {
-    const modalTitle = modal.querySelector('.modal-details h2');
-    const modalPrice = modal.querySelector('.modal-details .price');
-    const modalDescription = modal.querySelector('.modal-details p');
-    const modalButton = modal.querySelector('.modal-details .cta-button');
-    const modalImage = modal.querySelector('.modal-svg-container img');
+// Use event delegation for product tiles
+productGrid.addEventListener('click', (event) => {
+  if (event.target.classList.contains('view-item-btn')) {
+    const tile = event.target.closest('.tile-card');
+    const product = products.find(p => p.title === tile.querySelector('h3').innerText);
 
-    modalTitle.innerText = product.title;
-    modalPrice.innerText = product.price;
-    modalDescription.innerText = product.description;
-    modalButton.href = product.link;
-    modalImage.src = product.image;
+    if (product) {
+      const modalTitle = modal.querySelector('.modal-details h3'); // Changed from h2 to h3
+      const modalPrice = modal.querySelector('.modal-details .price');
+      const modalDescription = modal.querySelector('.modal-details p');
+      const modalButton = modal.querySelector('.modal-details .cta-button');
+      const modalImage = modal.querySelector('.modal-svg-container img');
 
-    modal.style.display = 'block';
-  });
+      modalTitle.innerText = product.title;
+      modalPrice.innerText = product.price;
+      modalDescription.innerText = product.description;
+      modalButton.href = product.link;
+      modalImage.src = product.image;
+
+      modal.style.display = 'block';
+    }
+  }
 });
 
 // Close modal functionality

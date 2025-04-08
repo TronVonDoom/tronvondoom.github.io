@@ -8,6 +8,12 @@
     --header-text: #fff; /* Keep header text white */
     --card-bg: #fdfdfd; /* Softer card background */
     --card-border: #ccc; /* Softer border color */
+    --font-size-small: 0.8rem;
+    --font-size-medium: 1rem;
+    --font-size-large: 1.5rem;
+    --padding-small: 0.5rem;
+    --padding-medium: 1rem;
+    --padding-large: 1.5rem;
   }
   
   [data-theme="dark"] {
@@ -522,25 +528,18 @@
   }
   
   /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .tile-card .size-boxes span {
-      font-size: 0.7rem; /* Adjust font size for smaller screens */
-      padding: 0.1rem 0.3rem; /* Adjust padding for smaller screens */
-    }
-  }
-  
-  @media (max-width: 480px) {
+  @media (max-width: 768px), (max-width: 480px) {
     .tile-card {
-      padding: 1rem; /* Reduce padding for smaller screens */
+      padding: var(--padding-small);
     }
   
     .tile-card h3 {
-      font-size: 1rem; /* Adjust font size for smaller screens */
+      font-size: var(--font-size-small);
     }
   
     .tile-card button {
-      font-size: 0.9rem; /* Adjust button font size for smaller screens */
-      padding: 0.5rem 0.8rem; /* Adjust button padding for smaller screens */
+      font-size: var(--font-size-small);
+      padding: var(--padding-small);
     }
   }
   

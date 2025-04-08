@@ -4,6 +4,7 @@
 
 - Removed SVG elements for merchandise tiles.
 - Replaced SVGs with product images in `assets/images/products/`.
+- **Updated Modal Markup**: Changed the product title in the modal from `<h2>` to `<h3>`.
 
 ## Project Structure
 
